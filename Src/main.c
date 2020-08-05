@@ -434,8 +434,10 @@ int main(void) {
         Feedback.start	        = (uint16_t)SERIAL_START_FRAME;
         Feedback.cmd1           = (int16_t)cmd1;
         Feedback.cmd2           = (int16_t)cmd2;
-        Feedback.speedR_meas	  = (int16_t)rtY_Right.n_mot;
+        Feedback.speedR_meas	  = (int16_t)rtY_Right.n_mot; // a_elecAngle-t ki kell probalni
         Feedback.speedL_meas	  = (int16_t)rtY_Left.n_mot;
+        //Feedback.speedR_meas	  = (int16_t)rtY_Right.a_elecAngle;
+        //Feedback.speedL_meas	  = (int16_t)rtY_Left.a_elecAngle;
         Feedback.batVoltage	    = (int16_t)(batVoltage * BAT_CALIB_REAL_VOLTAGE / BAT_CALIB_ADC);
         Feedback.boardTemp	    = (int16_t)board_temp_deg_c;
 
