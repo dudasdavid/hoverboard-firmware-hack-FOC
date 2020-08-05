@@ -432,12 +432,13 @@ int main(void) {
     #if defined(FEEDBACK_SERIAL_USART2) || defined(FEEDBACK_SERIAL_USART3)
       if (main_loop_counter % 2 == 0) {    // Send data periodically every 10 ms
         Feedback.start	        = (uint16_t)SERIAL_START_FRAME;
-        Feedback.cmd1           = (int16_t)cmd1;
-        Feedback.cmd2           = (int16_t)cmd2;
-        Feedback.speedR_meas	  = (int16_t)rtY_Right.n_mot; // a_elecAngle-t ki kell probalni
+        //Feedback.cmd1           = (int16_t)cmd1;
+        //Feedback.cmd2           = (int16_t)cmd2;
+        // use elec angle in the feedback payload instead of the original command
+        Feedback.cmd1           = (int16_t)rtY_Right.a_elecAngle;
+        Feedback.cmd2           = (int16_t)rtY_Left.a_elecAngle;
+        Feedback.speedR_meas	  = (int16_t)rtY_Right.n_mot;
         Feedback.speedL_meas	  = (int16_t)rtY_Left.n_mot;
-        //Feedback.speedR_meas	  = (int16_t)rtY_Right.a_elecAngle;
-        //Feedback.speedL_meas	  = (int16_t)rtY_Left.a_elecAngle;
         Feedback.batVoltage	    = (int16_t)(batVoltage * BAT_CALIB_REAL_VOLTAGE / BAT_CALIB_ADC);
         Feedback.boardTemp	    = (int16_t)board_temp_deg_c;
 
