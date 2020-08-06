@@ -32,7 +32,7 @@ clear
 clc
 
 % Load model parameters
-load BLDCmotorControl_data;
+load 01_Libraries/02_Plant/BLDCmotorControl_data;
 Ts                  = 5e-6;                         % [s] Model sampling time (200 kHz)
 Ts_ctrl             = 6e-5;                         % [s] Controller sampling time (~16 kHz)
 f_ctrl              = 16e3;                         % [Hz] Controller frequency = 1/Ts_ctrl (16 kHz)
